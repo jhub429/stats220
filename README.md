@@ -1,1 +1,11 @@
 # stats220
+
+This is my repo for STATS 220. 
+
+A little about me:
+
+- I am undertaking a degree in computer science and psychology
+- I am taking STATS 220 because I had to take a stats paper in my first psychology year and I absolutely loved it, so I ended up taking as many stats papers as I could.
+- I am interested in learning about everything really.. I'm a very curious person!
+
+A meme that captures how I currently feel about my university studies is ![] (https://tenor.com/view/jagyasini-jagyasini-singh-singh-original-frustration-busy-gif-14426341)
