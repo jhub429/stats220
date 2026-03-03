@@ -9,4 +9,4 @@ A little about me:
 - I am interested in learning about everything really.. I'm a very curious person!
 
 A meme that captures how I currently feel about my university studies is 
-![](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTNvN2sxZG9ua3d6ODR4ODV5MG40bXVwbTBiMmo0Z2F3bzAyYzU3aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MQnt8M32IKM9qyf4NM/giphy.gif)
+![](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2M0N21pbjN3dnc3eDkyZ3VycWZma3RvZDhsNXYzdzE5d2w2YzQyNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NVQ9qp42uN13oog0nI/giphy.gif)
