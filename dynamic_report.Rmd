@@ -5,7 +5,7 @@ output: html_fragment
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
-suppressPackageStartupMessages(library(tidyverse))
+
 ```
 
 ```{css}
@@ -31,7 +31,7 @@ img {
 
 
 ```{r}
-
+suppressPackageStartupMessages(library(tidyverse))
 
 logged_data = read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9KZnt9QJdSVfcaoHiknwWx56bDdNMwUxX0Tefj9DriA2YrtBmj9mA73cLZ9fi6PjWvNDmzfqNN3uz/pub?output=csv")
 
@@ -48,9 +48,12 @@ minimum_listeners = min(latest_data$listeners)
 maximum_listeners = max(latest_data$listeners)
 mean_listeners = mean(latest_data$listeners)
 
-report_min_max = paste("the minimum listeners a podcast had was", minimum_listeners, "while the maximum listeners was", maximum_listeners)
 
+# these will be used for my dynamic report
+
+report_min_max = paste("the minimum listeners a podcast had was", minimum_listeners, "while the maximum listeners was", maximum_listeners
 report_mean = paste0("the mean count of listeners for all episodes recorded was ", round(mean_listeners, digits=0))
+
 
 #check if the total amount of listeners is related to the political climate that day.
 
@@ -60,9 +63,6 @@ ggplot(data = latest_data) +
         subtitle = "Is the total amount of listeners related to the political climate that day?",
         x = "Total amount of listeners")
         
-
-
-
 #check whether the headline of the podcast provides more insight into the amount of listeners.
 
 ggplot(data = latest_data) +
