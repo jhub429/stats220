@@ -1,0 +1,80 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+h1, h2, h3 {
+  color: #1239e6
+}
+body {
+  background-color: #d8bff2;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000%;
+  height: auto;
+}
+
+```
+
+## Is there any link between what is going on in world politics and the amount of podcast listeners?
+
+
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+
+logged_data = read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9KZnt9QJdSVfcaoHiknwWx56bDdNMwUxX0Tefj9DriA2YrtBmj9mA73cLZ9fi6PjWvNDmzfqNN3uz/pub?output=csv")
+
+latest_data = logged_data[2:4] %>%
+              rename(headline = 1,
+                    listeners = 2,
+                    climate = 3)
+
+
+
+# the following information will be used for analytics:
+
+minimum_listeners = min(latest_data$listeners)
+maximum_listeners = max(latest_data$listeners)
+mean_listeners = mean(latest_data$listeners)
+
+report_min_max = paste("the minimum listeners a podcast had was", minimum_listeners, "while the maximum listeners was", maximum_listeners)
+
+report_mean = paste0("the mean count of listeners for all episodes recorded was ", round(mean_listeners, digits=0))
+
+#check if the total amount of listeners is related to the political climate that day.
+
+ggplot(data = latest_data) +
+  geom_bar(aes(x = listeners, fill = climate)) +
+   labs(title = "Why is everyone listening today?",
+        subtitle = "Is the total amount of listeners related to the political climate that day?",
+        x = "Total amount of listeners")
+        
+
+
+
+#check whether the headline of the podcast provides more insight into the amount of listeners.
+
+ggplot(data = latest_data) +
+  geom_bar(aes(x= listeners, fill = headline)) +
+   theme(legend.text = element_text(size=7),
+         legend.key.size = unit(0.5, "cm")) +
+     labs(title = "Why is everyone listening today?",
+        subtitle = "Could the headline inform how many listeners the \npodcast had that day?",
+        x = "Total amount of listeners")
+
+```
+
+These data show that `r report_min_max`, and that `r report_mean`.
+
+![](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif)
