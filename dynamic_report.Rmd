@@ -51,7 +51,7 @@ mean_listeners = mean(latest_data$listeners)
 
 # these will be used for my dynamic report
 
-report_min_max = paste("the minimum listeners a podcast had was", minimum_listeners, "while the maximum listeners was", maximum_listeners
+report_min_max = paste("the minimum listeners a podcast had was", minimum_listeners, "while the maximum listeners was", maximum_listeners)
 report_mean = paste0("the mean count of listeners for all episodes recorded was ", round(mean_listeners, digits=0))
 
 
@@ -74,4 +74,6 @@ ggplot(data = latest_data) +
         x = "Total amount of listeners")
 
 ```
+These data show that `r report_min_max`, and that `r report_mean`.
 
+![](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif)
