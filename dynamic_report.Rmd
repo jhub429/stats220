@@ -72,8 +72,8 @@ ggplot(data = latest_data) +
      labs(title = "Why is everyone listening today?",
         subtitle = "Could the headline inform how many listeners the \npodcast had that day?",
         x = "Total amount of listeners")
-
 ```
+
 These data show that `r report_min_max`, and that `r report_mean`.
 
 ![](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif)
