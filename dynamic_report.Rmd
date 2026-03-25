@@ -74,3 +74,4 @@ ggplot(data = latest_data) +
         x = "Total amount of listeners")
 ```
 
+
