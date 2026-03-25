@@ -5,16 +5,39 @@ output: html_fragment
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
-suppressPackageStartupMessages(library(tidyverse))
 
 ```
 
 ```{css}
-h1, h2, h3 {
-  color: #1239e6
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 body {
-  background-color: #d8bff2;
+  font-family: 'Roboto Mono', cursive;
+  background-color:  #d8bff2;
+}
+
+pre {
+  background-color:  #c3d1de;
+}
+
+h1 {
+  color: #0e22ab;
+  font-weight: bold;
+}
+
+h2  {
+  color: #4f63e8;
+  font-weight: bold;
+}
+
+h3 {
+  color: #4f00fd;
+  font-weight: bold;
+}
+
+h4 {
+  color: #7352bf;
+  font-weight: bold;
 }
 
 img {
@@ -29,16 +52,24 @@ img {
 
 ## Is there any link between what is going on in world politics and the amount of podcast listeners?
 
+I work editing the audio of a podcast that goes live from Monday to Friday. The podcast is about global politics and economy.
+
+I created a Google forms where I recorded the amount of listeners, headline and whether there was a particularly concerning global politics "climate" on the day of the podcast. This could be whether the ongoing conflict in Middle East is escalating, reaching peace deals, no major things to report, or there is a concerning headline but unrelated to the war.
+
+I have the hunch that the podcast receives more views when the political climate is more intense than when nothing important occurred,
+
+I have collected these data just for myself to confirm my hunch.
 
 
 ```{r}
 
+suppressPackageStartupMessages(library(tidyverse))
 logged_data = read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9KZnt9QJdSVfcaoHiknwWx56bDdNMwUxX0Tefj9DriA2YrtBmj9mA73cLZ9fi6PjWvNDmzfqNN3uz/pub?output=csv")
 
 latest_data = logged_data[2:4] %>%
-              rename(headline = 1,
-                    listeners = 2,
-                    climate = 3)
+  rename(headline = 1,
+         listeners = 2,
+         climate = 3)
 
 
 
@@ -47,31 +78,59 @@ latest_data = logged_data[2:4] %>%
 minimum_listeners = min(latest_data$listeners)
 maximum_listeners = max(latest_data$listeners)
 mean_listeners = mean(latest_data$listeners)
-
+number_responses = nrow(latest_data)
 
 # these will be used for my dynamic report
 
-report_min_max = paste("the minimum listeners a podcast had was", minimum_listeners, "while the maximum listeners was", maximum_listeners)
+report_min_max = paste("the minimum listeners a podcast had was", minimum_listeners, 
+                       "while the maximum listeners was", maximum_listeners)
+                      
 report_mean = paste0("the mean count of listeners for all episodes recorded was ", round(mean_listeners, digits=0))
 
+report_total_observations = paste("Out of ", number_responses, "episodes.")
+```
 
+```{r}
 #check if the total amount of listeners is related to the political climate that day.
 
 ggplot(data = latest_data) +
   geom_bar(aes(x = listeners, fill = climate)) +
-   labs(title = "Why is everyone listening today?",
-        subtitle = "Is the total amount of listeners related to the political climate that day?",
-        x = "Total amount of listeners")
-        
+  labs(title = "Why is everyone listening today?",
+       subtitle = "Is the total amount of listeners related to the political climate that day?",
+       x = "Total amount of listeners")
+```
+
+These data show that `r report_min_max`.
+In the plot above we can see that the episodes with lower amount of listeners correspond to the political climate category "Nothing major to report", and the one with higher amount of listeners, to the category "Conflict seems to be escalating".
+
+```{r}
 #check whether the headline of the podcast provides more insight into the amount of listeners.
 
 ggplot(data = latest_data) +
   geom_bar(aes(x= listeners, fill = headline)) +
-   theme(legend.text = element_text(size=7),
-         legend.key.size = unit(0.5, "cm")) +
-     labs(title = "Why is everyone listening today?",
-        subtitle = "Could the headline inform how many listeners the \npodcast had that day?",
-        x = "Total amount of listeners")
+  theme(legend.text = element_text(size=7),
+        legend.key.size = unit(0.5, "cm")) +
+  labs(title = "Did they read the headline?",
+       subtitle = "Could the headline inform how many listeners the \npodcast had that day?",
+       x = "Total amount of listeners")
 ```
+
+In the plot above we can see the exact podcast headline for the each episode and see how many listeners that episode has. 
+
+```{r}
+
+# check whether there is a similar amount of observations per "political climate" category .
+
+ggplot(data = latest_data) +
+  geom_bar(aes(x= climate, fill = listeners)) +
+  labs(title = "How many responses are there per category?",
+       subtitle = "Is the data umbalanced across the 4 groups?",
+       x = "Political Climate")
+```
+
+The plot above shows that actually our data is quite umbalanced. There are much more observations recorded belonging to the category "Nothing major to report" than to all other categories. The Category "Possible peace deal" has only one observation. 
+So before making any inference from these data it would be great to collect more observations and more normally distributed across all the categories.
+
+
 
 
