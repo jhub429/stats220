@@ -74,6 +74,3 @@ ggplot(data = latest_data) +
         x = "Total amount of listeners")
 ```
 
-These data show that `r report_min_max`, and that `r report_mean`.
-
-![](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif)
