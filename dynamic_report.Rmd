@@ -62,8 +62,8 @@ I have collected these data just for myself to confirm my hunch.
 
 
 ```{r}
-suppressPackageStartupMessages(library(tidyverse))
 
+library(tidyverse)
 logged_data = read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9KZnt9QJdSVfcaoHiknwWx56bDdNMwUxX0Tefj9DriA2YrtBmj9mA73cLZ9fi6PjWvNDmzfqNN3uz/pub?output=csv")
 
 latest_data = logged_data[2:4] %>%
