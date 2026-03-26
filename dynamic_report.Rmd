@@ -52,11 +52,11 @@ img {
 
 ## Is there any link between what is going on in world politics and the amount of podcast listeners?
 
-I work editing the audio of a podcast that goes live from Monday to Friday. The podcast is about global politics and economy.
+I work editing the audio of a podcast that goes live from Monday to Friday. The podcast is about global politics and economics.
 
-I created a Google forms where I recorded the amount of listeners, headline and whether there was a particularly concerning global politics "climate" on the day of the podcast. This could be whether the ongoing conflict in Middle East is escalating, reaching peace deals, no major things to report, or there is a concerning headline but unrelated to the war.
+I created a Google Form where I recorded the amount of listeners, headline and whether there was a particularly concerning global politics "climate" on the day of the podcast. This could be whether the ongoing conflict in Middle East is escalating, reaching peace deals, no major things to report, or there is a concerning headline but not related to the conflict on Middle East.
 
-I have the hunch that the podcast receives more views when the political climate is more intense than when nothing important occurred,
+I have the hunch that the podcast receives more views when the political climate is more intense than when nothing important occurred.
 
 I have collected these data just for myself to confirm my hunch.
 
